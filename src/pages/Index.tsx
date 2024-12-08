@@ -1,100 +1,110 @@
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-up");
-            observerRef.current?.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll(".reveal").forEach((el) => {
-      observerRef.current?.observe(el);
-    });
-
-    return () => observerRef.current?.disconnect();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-premium-50">
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm border-b">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <span className="text-xl font-medium">blank.</span>
+          <Button variant="ghost">Contact</Button>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-32 pb-20 md:pt-40 md:pb-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <span className="inline-block px-4 py-1 mb-6 text-sm font-medium bg-premium-200 text-premium-700 rounded-full">
-            Welcome to the future
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-premium-900 mb-6 tracking-tight">
-            Design that inspires.
-            <br />
-            Technology that delivers.
-          </h1>
-          <p className="text-lg md:text-xl text-premium-600 mb-8 leading-relaxed">
-            Experience the perfect blend of form and function, crafted with precision and care for those who appreciate the finest details.
-          </p>
-          <button className="px-8 py-4 bg-premium-900 text-white rounded-lg hover:bg-premium-800 transition-colors duration-200 shadow-lg">
-            Get Started
-          </button>
-        </motion.div>
+      <section className="pt-32 pb-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h1 className="text-[clamp(2.5rem,8vw,4.5rem)] font-light leading-tight tracking-tight text-neutral-900 mb-8">
+              We create digital experiences that matter
+            </h1>
+            <p className="text-lg text-neutral-600 max-w-xl">
+              A creative studio focused on design, development, and digital innovation. We transform ideas into exceptional digital experiences.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Features Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Thoughtful Design",
-              description: "Every pixel crafted with purpose and intention.",
-            },
-            {
-              title: "Premium Quality",
-              description: "Uncompromising attention to detail in every aspect.",
-            },
-            {
-              title: "Future Ready",
-              description: "Built for tomorrow's challenges and opportunities.",
-            },
-          ].map((feature, index) => (
-            <div
-              key={index}
-              className="reveal opacity-0 p-8 rounded-2xl bg-white shadow-[0_0_50px_rgba(0,0,0,0.03)] hover:shadow-[0_0_50px_rgba(0,0,0,0.06)] transition-shadow duration-300"
-            >
-              <h3 className="text-xl font-semibold text-premium-900 mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-premium-600">{feature.description}</p>
+      {/* Projects Grid */}
+      <section className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            {[1, 2, 3, 4].map((item) => (
+              <div
+                key={item}
+                className="group relative aspect-[4/3] bg-neutral-100 overflow-hidden cursor-pointer"
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-sm text-neutral-400">Project {item}</span>
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl font-light mb-12">Our Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Design",
+                  description: "Creating meaningful and intuitive user experiences",
+                },
+                {
+                  title: "Development",
+                  description: "Building robust and scalable digital solutions",
+                },
+                {
+                  title: "Strategy",
+                  description: "Crafting digital strategies that drive growth",
+                },
+              ].map((service, index) => (
+                <div key={index} className="space-y-4">
+                  <h3 className="text-xl font-medium">{service.title}</h3>
+                  <p className="text-neutral-600">{service.description}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="reveal opacity-0 max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-premium-900 mb-6">
-            Ready to experience excellence?
-          </h2>
-          <p className="text-lg text-premium-600 mb-8">
-            Join us in creating something extraordinary. Your journey towards exceptional design starts here.
-          </p>
-          <button className="px-8 py-4 bg-premium-900 text-white rounded-lg hover:bg-premium-800 transition-colors duration-200 shadow-lg">
-            Start Now
-          </button>
+      {/* Footer */}
+      <footer className="py-20 border-t">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <span className="text-xl font-medium">blank.</span>
+            <div className="flex gap-8 text-sm text-neutral-600">
+              <a href="#" className="hover:text-neutral-900 transition-colors">Instagram</a>
+              <a href="#" className="hover:text-neutral-900 transition-colors">Twitter</a>
+              <a href="#" className="hover:text-neutral-900 transition-colors">LinkedIn</a>
+            </div>
+          </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 };
