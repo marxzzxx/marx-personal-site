@@ -79,20 +79,20 @@ const Index = () => {
                 whileHover={{ scale: 0.995 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="bg-white border rounded-lg overflow-hidden flex flex-col md:flex-row">
+                <div className="bg-white border rounded-lg overflow-hidden flex flex-col md:flex-row py-4">
                   <div className="w-full md:w-1/2 aspect-[4/3] bg-neutral-100 relative">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-sm text-neutral-400">Project Image</span>
                     </div>
                   </div>
-                  <div className="w-full md:w-1/2 p-8 flex flex-col justify-between">
+                  <div className="w-full md:w-1/2 px-6 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-2xl font-light mb-4">{project.title}</h3>
-                      <p className="text-neutral-600">{project.description}</p>
+                      <h3 className="text-xl font-light mb-2">{project.title}</h3>
+                      <p className="text-neutral-600 text-sm">{project.description}</p>
                     </div>
-                    <div className="mt-6 flex items-center text-sm text-neutral-900 font-medium">
+                    <div className="mt-4 flex items-center text-xs text-neutral-900 font-medium">
                       View Project
-                      <ArrowUpRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      <ArrowUpRight className="ml-2 w-3 h-3 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
                   </div>
                 </div>
