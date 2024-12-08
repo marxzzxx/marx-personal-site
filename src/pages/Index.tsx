@@ -1,7 +1,35 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 const Index = () => {
+  const projects = [
+    {
+      id: 1,
+      title: "Digital Experience",
+      description: "Creating seamless digital experiences through innovative design and development",
+      url: "https://example.com/project1",
+    },
+    {
+      id: 2,
+      title: "Brand Identity",
+      description: "Crafting unique and memorable brand identities that stand out",
+      url: "https://example.com/project2",
+    },
+    {
+      id: 3,
+      title: "Web Applications",
+      description: "Building robust and scalable web applications for modern businesses",
+      url: "https://example.com/project3",
+    },
+    {
+      id: 4,
+      title: "Interactive Design",
+      description: "Designing engaging interactive experiences that captivate users",
+      url: "https://example.com/project4",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -31,7 +59,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects Grid */}
+      {/* Projects Section */}
       <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -39,18 +67,36 @@ const Index = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="space-y-4"
           >
-            {[1, 2, 3, 4].map((item) => (
-              <div
-                key={item}
-                className="group relative aspect-[4/3] bg-neutral-100 overflow-hidden cursor-pointer"
+            {projects.map((project) => (
+              <motion.a
+                key={project.id}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+                whileHover={{ scale: 0.995 }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-sm text-neutral-400">Project {item}</span>
+                <div className="bg-white border rounded-lg overflow-hidden flex flex-col md:flex-row">
+                  <div className="w-full md:w-1/2 aspect-[4/3] bg-neutral-100 relative">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-sm text-neutral-400">Project Image</span>
+                    </div>
+                  </div>
+                  <div className="w-full md:w-1/2 p-8 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl font-light mb-4">{project.title}</h3>
+                      <p className="text-neutral-600">{project.description}</p>
+                    </div>
+                    <div className="mt-6 flex items-center text-sm text-neutral-900 font-medium">
+                      View Project
+                      <ArrowUpRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
-              </div>
+              </motion.a>
             ))}
           </motion.div>
         </div>
