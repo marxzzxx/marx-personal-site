@@ -56,7 +56,7 @@ const Index = () => {
             className="text-center mb-16"
           >
 
-            <img src= {theme === 'dark' ? '/public/marx_logo_white.png' : '/public/marx_logo_black.png'} alt = "marx logo" className="w-20 h-20 mx-auto mb-8 transition-all duration-300"/>
+            <img src= {theme === 'dark' ? '/dist/marx_logo_white.png' : '/dist/marx_logo_black.png'} alt = "marx logo" className="w-20 h-20 mx-auto mb-8 transition-all duration-300"/>
             <h1 className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-12">
               I create and build cool ideas,
               <br />
