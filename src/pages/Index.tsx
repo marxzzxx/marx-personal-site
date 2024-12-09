@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Youtube, Twitter, Instagram, Mail, Infinity, ArrowUpRight } from "lucide-react";
+import { Youtube, Twitter, Instagram, Mail, ArrowUpRight, Infinity } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 
@@ -54,7 +54,11 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <Infinity className="w-12 h-12 mx-auto mb-8" />
+            <img 
+              src={theme === 'dark' ? '/lovable-uploads/31574149-1e00-4568-933a-bb1d14979087.png' : '/lovable-uploads/03a418b9-3acc-42af-91f2-7b4e757aa9ac.png'} 
+              alt="Logo" 
+              className="w-12 h-12 mx-auto mb-8 transition-all duration-300"
+            />
             <h1 className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-12">
               I build cool companies,
               <br />
