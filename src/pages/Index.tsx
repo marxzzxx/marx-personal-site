@@ -21,7 +21,7 @@ const Index = () => {
       id: 2,
       title: "Brandflow",
       description: "Tap into the future of personal branding",
-      icon: <img src={theme === 'dark' ? '/public/brandflow_white_ring.png' : '/public/brandflow_black_ring.png'} className="w-10 h-10" />,
+      icon: <img src={theme === 'dark' ? './dist/assets/brandflow_white_ring.png' : './dist/assets/brandflow_black_ring.png'} className="w-10 h-10" />,
       action: "Learn more",
       url: "https://www.brandflow.dev/",
     },
@@ -56,7 +56,7 @@ const Index = () => {
             className="text-center mb-16"
           >
 
-            <img src= {theme === 'dark' ? '/public/marx_logo_white.png' : '/public/marx_logo_black.png'} alt = "marx logo" className="w-20 h-20 mx-auto mb-8 transition-all duration-300"/>
+            <img src= {theme === 'dark' ? './dist/assets/marx_logo_white.png' : './dist/assets/marx_logo_black.png'} alt = "marx logo" className="w-20 h-20 mx-auto mb-8 transition-all duration-300"/>
             <h1 className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-12">
               I create and build cool ideas,
               <br />
