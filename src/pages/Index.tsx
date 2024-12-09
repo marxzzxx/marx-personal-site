@@ -1,34 +1,35 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Youtube, Twitter, Instagram, Mail, Infinity, ArrowUpRight } from "lucide-react";
+import { Instagram, Mail, ArrowUpRight, Infinity, Linkedin,  } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Index = () => {
   const { theme } = useTheme();
 
   const links = [
-    {
-      id: 1,
-      title: "E-mail list",
-      description: "Receive emails with valuable knowledge templates and more",
-      icon: <Mail className="w-8 h-8" />,
-      action: "Sign up",
-      url: "#",
-    },
+    // {
+    //   id: 1,
+    //   title: "E-mail list",
+    //   description: "Receive emails with valuable knowledge templates and more",
+    //   icon: <Mail className="w-8 h-8" />,
+    //   action: "Sign up",
+    //   url: "#",
+    // },
     {
       id: 2,
-      title: "Digital Experience",
-      description: "Tap into the future of digital experiences",
-      icon: <ArrowUpRight className="w-8 h-8" />,
+      title: "Brandflow",
+      description: "Tap into the future of personal branding",
+      icon: <img src={theme === 'dark' ? '/public/brandflow_white_ring.png' : '/public/brandflow_black_ring.png'} className="w-10 h-10" />,
       action: "Learn more",
-      url: "#",
+      url: "https://www.brandflow.dev/",
     },
     {
       id: 3,
       title: "My Projects",
       description: "Access all my latest projects and case studies",
-      icon: <Infinity className="w-8 h-8" />,
+      icon: <Infinity className="w-10 h-10" />,
       action: "Learn more",
       url: "#",
     },
@@ -38,14 +39,14 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed w-full top-0 z-50">
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <span className="text-lg font-light tracking-wide">studio</span>
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <span className="text-lg font-semibold tracking-wide">marx</span>
           <ModeToggle />
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 pt-32 pb-20">
+      <main className="container mx-auto px-4 pt-24 pb-24">
         <div className="max-w-3xl mx-auto">
           {/* Hero Section */}
           <motion.div
@@ -54,38 +55,39 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <Infinity className="w-12 h-12 mx-auto mb-8" />
+
+            <img src= {theme === 'dark' ? '/public/marx_logo_white.png' : '/public/marx_logo_black.png'} alt = "marx logo" className="w-20 h-20 mx-auto mb-8 transition-all duration-300"/>
             <h1 className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-12">
-              I build cool companies,
+              I create and build cool ideas,
               <br />
               with cool people.
             </h1>
 
             {/* Social Links */}
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-8">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/marx-ong/"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Youtube className="w-6 h-6" />
+                <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/marxzzxx/"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Instagram className="w-6 h-6" />
+              </a>
+              <a
+                href="mailto:marxong19@gmail.com"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Mail className="w-6 h-6" />
               </a>
             </div>
           </motion.div>
@@ -127,7 +129,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 text-center text-sm text-muted-foreground">
-        <p>© 2024 Studio. All rights reserved.</p>
+        <p>© 2024 Marx Ong</p>
       </footer>
     </div>
   );
