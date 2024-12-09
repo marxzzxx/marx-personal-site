@@ -99,3 +99,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 450px) {
+  .mobile-brandflow {
+    width: 56px;
+    height: auto;
+  }
+}

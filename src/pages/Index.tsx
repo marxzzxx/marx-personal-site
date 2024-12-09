@@ -21,7 +21,7 @@ const Index = () => {
       id: 2,
       title: "Brandflow",
       description: "Tap into the future of personal branding",
-      icon: <img src={theme === 'dark' ? '/brandflow_white_ring.png' : '/brandflow_black_ring.png'} className="w-10 h-10" />,
+      icon: <img src={theme === 'dark' ? '/brandflow_white_ring.png' : '/brandflow_black_ring.png'} className="w-10 h-10 mobile-brandflow" />,
       action: "Learn more",
       url: "https://www.brandflow.dev/",
     },
