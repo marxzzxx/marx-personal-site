@@ -1,120 +1,133 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import { Youtube, Twitter, Instagram, Mail, Infinity, ArrowUpRight } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const Index = () => {
-  const projects = [
+  const { theme } = useTheme();
+
+  const links = [
     {
       id: 1,
-      title: "Digital Experience",
-      description: "Creating seamless digital experiences through innovative design and development",
-      url: "https://example.com/project1",
-      year: "2024",
+      title: "E-mail list",
+      description: "Receive emails with valuable knowledge templates and more",
+      icon: <Mail className="w-8 h-8" />,
+      action: "Sign up",
+      url: "#",
     },
     {
       id: 2,
-      title: "Brand Identity",
-      description: "Crafting unique and memorable brand identities that stand out",
-      url: "https://example.com/project2",
-      year: "2023",
+      title: "Digital Experience",
+      description: "Tap into the future of digital experiences",
+      icon: <ArrowUpRight className="w-8 h-8" />,
+      action: "Learn more",
+      url: "#",
     },
     {
       id: 3,
-      title: "Web Applications",
-      description: "Building robust and scalable web applications for modern businesses",
-      url: "https://example.com/project3",
-      year: "2023",
+      title: "My Projects",
+      description: "Access all my latest projects and case studies",
+      icon: <Infinity className="w-8 h-8" />,
+      action: "Learn more",
+      url: "#",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
-      <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm">
+      <nav className="fixed w-full top-0 z-50">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <span className="text-lg font-light tracking-wide">studio</span>
-          <Button variant="ghost" className="text-sm font-light tracking-wide">Contact</Button>
+          <ModeToggle />
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-48 pb-32">
-        <div className="container mx-auto px-4">
+      {/* Main Content */}
+      <main className="container mx-auto px-4 pt-32 pb-20">
+        <div className="max-w-3xl mx-auto">
+          {/* Hero Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            className="text-center mb-16"
           >
-            <h1 className="text-[clamp(2rem,5vw,3rem)] font-light leading-tight tracking-tight text-neutral-900 mb-8">
-              A creative studio focused on crafting meaningful digital experiences through thoughtful design and development.
+            <Infinity className="w-12 h-12 mx-auto mb-8" />
+            <h1 className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-12">
+              I build cool companies,
+              <br />
+              with cool people.
             </h1>
-            <p className="text-base text-neutral-600 font-light tracking-wide">
-              Based in the digital realm, delivering worldwide
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Projects Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-px"
-          >
-            {projects.map((project) => (
-              <motion.a
-                key={project.id}
-                href={project.url}
+            {/* Social Links */}
+            <div className="flex justify-center gap-4">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block group border-t last:border-b border-neutral-200"
-                whileHover={{ backgroundColor: "#f8f8f8" }}
+              >
+                <Youtube className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Links Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-4"
+          >
+            {links.map((link) => (
+              <motion.a
+                key={link.id}
+                href={link.url}
+                className="block group"
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="py-8 flex items-center justify-between">
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-light tracking-wide">{project.title}</h3>
-                    <p className="text-sm text-neutral-500 font-light tracking-wide">{project.description}</p>
-                  </div>
-                  <div className="flex items-center gap-8">
-                    <span className="text-sm text-neutral-400 font-light">{project.year}</span>
-                    <ArrowUpRight className="w-5 h-5 text-neutral-400 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="text-primary">{link.icon}</div>
+                      <div>
+                        <h3 className="text-lg font-medium mb-1">{link.title}</h3>
+                        <p className="text-sm text-muted-foreground">{link.description}</p>
+                      </div>
+                    </div>
+                    <Button variant="ghost" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      {link.action}
+                    </Button>
                   </div>
                 </div>
               </motion.a>
             ))}
           </motion.div>
         </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-32 bg-neutral-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
-            <h2 className="text-2xl font-light tracking-wide">Our Approach</h2>
-            <p className="text-base text-neutral-600 font-light leading-relaxed tracking-wide">
-              We believe in the power of minimalism and purposeful design. Every project is an opportunity to create something meaningful that resonates with its audience while maintaining simplicity and elegance.
-            </p>
-          </div>
-        </div>
-      </section>
+      </main>
 
       {/* Footer */}
-      <footer className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <span className="text-sm font-light tracking-wide text-neutral-500">© 2024 Studio. All rights reserved.</span>
-            <div className="flex gap-8">
-              <a href="#" className="text-sm font-light tracking-wide text-neutral-500 hover:text-neutral-900 transition-colors">Instagram</a>
-              <a href="#" className="text-sm font-light tracking-wide text-neutral-500 hover:text-neutral-900 transition-colors">Twitter</a>
-              <a href="#" className="text-sm font-light tracking-wide text-neutral-500 hover:text-neutral-900 transition-colors">LinkedIn</a>
-            </div>
-          </div>
-        </div>
+      <footer className="container mx-auto px-4 py-8 text-center text-sm text-muted-foreground">
+        <p>© 2024 Studio. All rights reserved.</p>
       </footer>
     </div>
   );
