@@ -28,10 +28,10 @@ const Index = () => {
     {
       id: 3,
       title: "My Projects",
-      description: "Access all my latest projects and case studies",
+      description: "Access all my latest projects and ventures",
       icon: <Infinity className="w-10 h-10" />,
-      action: "Learn more",
-      url: "#",
+      action: "Coming Soon",
+      // url: "#",
     },
   ];
 
@@ -74,21 +74,21 @@ const Index = () => {
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="https://www.instagram.com/marxzzxx/"
+                href="https://www.instagram.com/marxxong/"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Instagram className="w-6 h-6" />
               </a>
-              <a
+              {/* <a
                 href="mailto:marxong19@gmail.com"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Mail className="w-6 h-6" />
-              </a>
+              </a> */}
             </div>
           </motion.div>
 
